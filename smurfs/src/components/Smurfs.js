@@ -2,13 +2,13 @@ import React from 'react'
 
 function Smurfs(props){
 
-     console.log(props.smurfs)
+     // console.log(props.smurfs)
 
      return(
           <div>
-               <h3>{props.smurfs.name}</h3>
-               <p>{props.smurfs.height}</p>
-               <p>{props.smurfs.age}</p>
+               <h3>Name: {props.smurfs.name}</h3>
+               <p>Height: {props.smurfs.height}</p>
+               <p>Age: {props.smurfs.age}</p>
           </div>
      )
 }

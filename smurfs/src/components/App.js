@@ -1,4 +1,4 @@
-import React, {useState, useReducer, useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import Smurfs from './Smurfs'
 import {connect} from 'react-redux'
 import { fetchSmurf, smurfForm } from '../actions' 
@@ -9,7 +9,7 @@ function App(props){
 
   useEffect( () => {
     props.fetchSmurf()
-  },[])
+  },[props.fetchSmurf])
 
   const [newSmurf, setNewSmurf] = useState({
     name:'',
