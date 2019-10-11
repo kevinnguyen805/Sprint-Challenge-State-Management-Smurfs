@@ -15,3 +15,10 @@ export const fetchSmurf = () => dispatch => {
           dispatch({type: SMURF_FAILURE, payload: error})
      })
 }
+
+
+export const FORM_SUCCESS = "FORM_SUCCESS";
+
+export const smurfForm = (formData) => dispatch => {
+     dispatch({type: FORM_SUCCESS, payload: formData})
+}
