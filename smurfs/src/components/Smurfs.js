@@ -6,17 +6,9 @@ function Smurfs(props){
 
      return(
           <div>
-               {
-                    props.smurfs.map(item => {
-                         return(
-                              <div key={item.id}>
-                              <h3>{item.name}</h3>
-                              <p>{item.height}</p>
-                              <p>{item.age}</p>
-                              </div>
-                         )
-                    })
-               }
+               <h3>{props.smurfs.name}</h3>
+               <p>{props.smurfs.height}</p>
+               <p>{props.smurfs.age}</p>
           </div>
      )
 }

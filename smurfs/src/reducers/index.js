@@ -19,7 +19,7 @@ const reducers = (state = initialState, action) => {
                     ...state,
                     errors: '',
                     isFetching: false, 
-                    smurfs: [...state.smurfs, action.payload]
+                    smurfs: action.payload
                }
           case SMURF_FAILURE:
                return{
@@ -35,7 +35,7 @@ const reducers = (state = initialState, action) => {
                return{
                     ...state,
                     smurfs: [
-                         ...state, newSmurf
+                         ...state.smurfs, action.payload
                     ]
                }
           default:
