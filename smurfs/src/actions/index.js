@@ -17,8 +17,13 @@ export const fetchSmurf = () => dispatch => {
 }
 
 
-export const FORM_SUCCESS = "FORM_SUCCESS";
+// export const FORM_SUCCESS = "FORM_SUCCESS";
 
+// export const smurfForm = (formData) => dispatch => {
+//      dispatch({type: FORM_SUCCESS, payload: formData})
+// }
+
+export const SMURF_FORM = "SMURF_FORM";
 export const smurfForm = (formData) => dispatch => {
-     dispatch({type: FORM_SUCCESS, payload: formData})
+     dispatch({ type: SMURF_FORM, payload: formData })
 }

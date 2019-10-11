@@ -1,13 +1,13 @@
-import {SMURF_START, SMURF_SUCCESS, SMURF_FAILURE, FORM_SUCCESS} from '../actions/'
+import {SMURF_START, SMURF_SUCCESS, SMURF_FAILURE, SMURF_FORM} from '../actions/'
 
 
-const initialState = {
+export const initialState = {
      smurfs: [],
      errors: '',
      isFetching: false
 }
 
-const reducers = (state = initialState, action) => {
+export const reducers = (state = initialState, action) => {
      switch(action.type){
           case SMURF_START: 
                return{
@@ -27,19 +27,21 @@ const reducers = (state = initialState, action) => {
                     errors: "Uh oh! You didn't fetch your smurf data",
                     isFetching: false
                }
-          case FORM_SUCCESS:
-               const newSmurf = {
-                    item: action.payload,
-                    id: Date.now()
-               }
+          // case SMURF_FORM:
+          //      console.log(action.payload)
+          //      return{
+          //           ...state,
+          //           smurfs: [...state.smurfs, action.payload]
+          //      }
+          case "SMURF_FORM":
+               console.log(action.payload)
                return{
                     ...state,
-                    smurfs: [
-                         ...state, newSmurf
-                    ]
+                    smurfs: [...state.smurfs, action.payload]
                }
           default:
                return state 
      }
+
 }
 export default reducers

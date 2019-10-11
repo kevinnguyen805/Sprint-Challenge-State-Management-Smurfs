@@ -1,7 +1,10 @@
 import React, {useState, useReducer, useEffect} from "react";
 import Smurfs from './Smurfs'
 import {connect} from 'react-redux'
-import { fetchSmurf, smurfForm } from '../actions' 
+import { fetchSmurf} from '../actions' 
+import {initialState, reducers} from '../reducers/index'
+import NewSmurfs from './NewSmurfs'
+
 
 import "./App.css";
 
@@ -11,18 +14,21 @@ function App(props){
     props.fetchSmurf()
   },[])
 
-  const [newSmurf, setNewSmurf] = useState({
+
+  const [state, dispatch] = useReducer(reducers, initialState);
+  const [item, setItem] = useState({
     name:'',
     height:'',
-    age:''
+    age:'',
+    id:Date.now()
   })
-  
 
   const handleChanges = event => {
-    setNewSmurf({
-      ...newSmurf, [event.target.name] : event.target.value
-    })
+    setItem({...item, [event.target.name]: event.target.value})
   }
+
+  console.log(state)
+  console.log(props.smurfs)
 
   return(
     <div>
@@ -30,28 +36,33 @@ function App(props){
         <input 
         type="text"
         name="name"
-        value={name}
+        value={item.name}
         onChange={handleChanges}
         />
         <input 
         type="text"
         name="height"
-        value={height}
+        value={item.height}
         onChange={handleChanges}
         />
         <input 
         type="text"
         name="age"
-        value={age}
+        value={item.age}
         onChange={handleChanges}
         />
       </div>
 
-      <button onClick={() => props.smurfForm(newSmurf)}>Add a Smurf to your village!</button>
+      <button onClick={() => dispatch({type: "SMURF_FORM", payload:item })}>Add a Smurf to your village!</button>
 
       {
         props.smurfs.map(item => {
           return(<Smurfs smurfs={item} key={item.id} />)
+        })
+      }
+      {
+        state.smurfs.map(item => {
+          return(<NewSmurfs smurf={item} key={item.id}/>)
         })
       }
     </div>
@@ -64,4 +75,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {fetchSmurf, smurfForm})(App);
+export default connect(mapStateToProps, {fetchSmurf})(App);

@@ -3,7 +3,6 @@ import React from 'react'
 
 function Smurfs(props){
 
-     console.log(props.smurfs.id)
 
      return(
           <div key={props.smurfs.id}>
