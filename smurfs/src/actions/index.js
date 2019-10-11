@@ -21,4 +21,11 @@ export const FORM_SUCCESS = "FORM_SUCCESS";
 
 export const smurfForm = (formData) => dispatch => {
      dispatch({type: FORM_SUCCESS, payload: formData})
+     axios.post('http://localhost:3333/smurfs', formData)
+     .then(response => {
+          console.log(response)
+     })
+     .catch(error => {
+          console.log(error)
+     })
 }

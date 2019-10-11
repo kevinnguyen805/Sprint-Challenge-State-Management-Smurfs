@@ -29,13 +29,13 @@ const reducers = (state = initialState, action) => {
                }
           case FORM_SUCCESS:
                const newSmurf = {
-                    item: action.payload,
+                    ...action.payload,
                     id: Date.now()
                }
                return{
                     ...state,
                     smurfs: [
-                         ...state.smurfs, action.payload
+                         ...state.smurfs, newSmurf
                     ]
                }
           default:
