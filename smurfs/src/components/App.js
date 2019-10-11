@@ -20,15 +20,13 @@ function App(props){
     name:'',
     height:'',
     age:'',
-    id:Date.now()
+    id:''
   })
 
   const handleChanges = event => {
     setItem({...item, [event.target.name]: event.target.value})
   }
 
-  console.log(state)
-  console.log(props.smurfs)
 
   return(
     <div>
@@ -53,18 +51,17 @@ function App(props){
         />
       </div>
 
-      <button onClick={() => dispatch({type: "SMURF_FORM", payload:item })}>Add a Smurf to your village!</button>
-
       {
         props.smurfs.map(item => {
-          return(<Smurfs smurfs={item} key={item.id} />)
+          return(
+            <Smurfs smurfs={item} key={item.id}/>
+          )
         })
       }
-      {
-        state.smurfs.map(item => {
-          return(<NewSmurfs smurf={item} key={item.id}/>)
-        })
-      }
+   
+
+      <Smurfs smurfs={props.smurfs}/>
+   
     </div>
   )
 }

@@ -8,7 +8,7 @@ export const fetchSmurf = () => dispatch => {
      dispatch({type: SMURF_START});
      axios.get('http://localhost:3333/smurfs')
      .then(response => {
-          console.log(response)
+          // console.log(response)
           dispatch({type: SMURF_SUCCESS, payload: response.data})
      })
      .catch(error => {
@@ -17,13 +17,37 @@ export const fetchSmurf = () => dispatch => {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // export const FORM_SUCCESS = "FORM_SUCCESS";
 
 // export const smurfForm = (formData) => dispatch => {
 //      dispatch({type: FORM_SUCCESS, payload: formData})
 // }
 
-export const SMURF_FORM = "SMURF_FORM";
-export const smurfForm = (formData) => dispatch => {
-     dispatch({ type: SMURF_FORM, payload: formData })
-}
+
+
+// export const SMURF_FORM = "SMURF_FORM";
+// export const smurfForm = (formData) => dispatch => {
+//      dispatch({ type: SMURF_FORM, payload: formData })
+//      axios.post('/smurfs', formData)
+//      .then(response => {
+//           console.log(response)
+//      })
+// }

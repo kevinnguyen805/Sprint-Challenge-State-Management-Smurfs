@@ -19,7 +19,7 @@ export const reducers = (state = initialState, action) => {
                     ...state,
                     errors: '',
                     isFetching: false, 
-                    smurfs: action.payload
+                    smurfs: [...state.smurfs, action.payload]
                }
           case SMURF_FAILURE:
                return{
@@ -27,18 +27,25 @@ export const reducers = (state = initialState, action) => {
                     errors: "Uh oh! You didn't fetch your smurf data",
                     isFetching: false
                }
+
+
+
           // case SMURF_FORM:
           //      console.log(action.payload)
           //      return{
           //           ...state,
           //           smurfs: [...state.smurfs, action.payload]
           //      }
-          case "SMURF_FORM":
-               console.log(action.payload)
-               return{
-                    ...state,
-                    smurfs: [...state.smurfs, action.payload]
-               }
+          // case "SMURF_FORM":
+          //      console.log(action.payload)
+          //      const newItem = {
+          //           ...action.payload, 
+          //           id: Date.now()
+          //      }
+          //      return{
+          //           ...state,
+          //           smurfs: [...state.smurfs, newItem]
+          //      }
           default:
                return state 
      }
