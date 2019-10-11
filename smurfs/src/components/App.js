@@ -1,10 +1,7 @@
 import React, {useState, useReducer, useEffect} from "react";
 import Smurfs from './Smurfs'
 import {connect} from 'react-redux'
-import { fetchSmurf} from '../actions' 
-import {initialState, reducers} from '../reducers/index'
-import NewSmurfs from './NewSmurfs'
-
+import { fetchSmurf, smurfForm } from '../actions' 
 
 import "./App.css";
 
@@ -14,19 +11,18 @@ function App(props){
     props.fetchSmurf()
   },[])
 
-
-  const [state, dispatch] = useReducer(reducers, initialState);
-  const [item, setItem] = useState({
+  const [newSmurf, setNewSmurf] = useState({
     name:'',
     height:'',
-    age:'',
-    id:''
+    age:''
   })
+  
 
   const handleChanges = event => {
-    setItem({...item, [event.target.name]: event.target.value})
+    setNewSmurf({
+      ...newSmurf, [event.target.name] : event.target.value
+    })
   }
-
 
   return(
     <div>
@@ -34,34 +30,30 @@ function App(props){
         <input 
         type="text"
         name="name"
-        value={item.name}
+        value={newSmurf.name}
         onChange={handleChanges}
         />
         <input 
         type="text"
         name="height"
-        value={item.height}
+        value={newSmurf.height}
         onChange={handleChanges}
         />
         <input 
         type="text"
         name="age"
-        value={item.age}
+        value={newSmurf.age}
         onChange={handleChanges}
         />
       </div>
 
+      <button onClick={() => props.smurfForm(newSmurf)}>Add a Smurf to your village!</button>
+
       {
         props.smurfs.map(item => {
-          return(
-            <Smurfs smurfs={item} key={item.id}/>
-          )
+          return(<Smurfs smurfs={item} key={item.id} />)
         })
       }
-   
-
-      <Smurfs smurfs={props.smurfs}/>
-   
     </div>
   )
 }
@@ -72,4 +64,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {fetchSmurf})(App);
+export default connect(mapStateToProps, {fetchSmurf, smurfForm})(App);

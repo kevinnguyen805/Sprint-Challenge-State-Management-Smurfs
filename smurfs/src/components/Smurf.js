@@ -1,12 +1,11 @@
-import React from 'react'
+// import React from 'react'
 
-const Smurf = props => {
+// const Smurf = props => {
 
-     console.log(props.smurf)
 
-     return(
-          <div>Hello</div>
-     )
-}
+//      return(
+//           <div>Hello</div>
+//      )
+// }
 
-export default Smurf
+// export default Smurf
