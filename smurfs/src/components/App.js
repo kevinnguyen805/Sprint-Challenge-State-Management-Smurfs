@@ -11,6 +11,8 @@ function App(props){
     props.fetchSmurf()
   },[])
 
+  console.log(props.smurfs)
+
   return(
     <div>
 

@@ -3,10 +3,14 @@ import React from 'react'
 
 function Smurfs(props){
 
-     console.log(props)
+     console.log(props.smurfs.id)
 
      return(
-          <div>Hello I am the child smurf component</div>
+          <div key={props.smurfs.id}>
+               <h3>{props.smurfs.name}</h3>
+               <p> Height: {props.smurfs.height}</p>
+               <p> Age: {props.smurfs.age}</p>
+          </div>
      )
 }
 
